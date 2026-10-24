@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SafeAfrica — Prévenez les arnaques en Afrique</title>
+<style>
+:root{--green:#047857;--red:#dc2626;--amber:#d97706;--gray:#64748b;--dark:#0f172a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,Helvetica,sans-serif;background:#f8fafc;color:var(--dark);line-height:1.6}
+.hidden{display:none!important}
+header{background:#fff;border-bottom:1px solid #e2e8f0;position:sticky;top:0;z-index:10}
+.nav{max-width:1100px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:14px 20px}
+.logo{color:var(--green);font-weight:bold;font-size:22px;text-decoration:none}
+nav a{color:var(--dark);text-decoration:none;margin-left:16px;font-size:14px;cursor:pointer}
+.btn{background:var(--green);color:#fff;padding:10px 16px;border-radius:8px;text-decoration:none;font-weight:bold;border:0;cursor:pointer}
+.btn-white{background:#fff;color:var(--green)}
+.btn-outline{border:2px solid #fff;color:#fff;background:transparent}
+.hero{background:var(--green);color:#fff;padding:56px 20px;text-align:center}
+.hero h1{font-size:34px;max-width:800px;margin:auto}
+.hero p{max-width:700px;margin:14px auto 24px}
+section{max-width:1100px;margin:auto;padding:40px 20px}
+h2{margin-bottom:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.card{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:20px}
+.card h3{margin-bottom:8px}
+.card p{color:var(--gray);font-size:14px}
+.advice{background:#ecfdf5;border-left:4px solid var(--green);padding:10px;margin-top:10px;font-size:14px}
+form{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:24px;display:grid;gap:14px;grid-template-columns:1fr 1fr}
+label{font-size:14px;font-weight:bold}
+input,select,textarea{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:8px;margin-top:5px;font-family:inherit}
+textarea{grid-column:1/-1;min-height:120px}
+.full{grid-column:1/-1}
+button{background:var(--green);color:#fff;border:0;padding:12px;border-radius:8px;font-weight:bold;cursor:pointer}
+.success{color:var(--green);font-weight:bold;margin-top:10px}
+footer{background:#fff;border-top:1px solid #e2e8f0;padding:24px;text-align:center;color:var(--gray);font-size:14px}
+.login{max-width:400px;margin:60px auto;background:#fff;padding:32px;border-radius:14px;box-shadow:0 10px 30px rgba(15,23,42,.08)}
+.error{color:var(--red);font-size:14px;margin-bottom:12px;display:none}
+.topbar{background:#fff;border-bottom:1px solid #e2e8f0;padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+.logout{background:#e2e8f0;color:var(--dark);padding:8px 14px;border-radius:8px;border:0;cursor:pointer;font-weight:bold}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px;margin-bottom:24px}
+.stat{background:#fff;border-radius:12px;padding:18px;border:1px solid #e2e8f0}
+.stat strong{display:block;font-size:26px}
+.report{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:18px;margin-bottom:14px}
+.badge{display:inline-block;padding:4px 10px;border-radius:999px;font-size:12px;font-weight:bold}
+.pending{background:#fef3c7;color:var(--amber)}
+.verified{background:#d1fae5;color:var(--green)}
+.rejected{background:#fee2e2;color:var(--red)}
+.actions{margin-top:12px;display:flex;gap:8px}
+.actions button{width:auto;padding:8px 14px}
+.approve{background:var(--green)}
+.reject{background:var(--red)}
+.note{background:#fff7ed;border-left:4px solid var(--amber);padding:12px;border-radius:8px;margin-bottom:20px;font-size:14px}
+@media(max-width:640px){form{grid-template-columns:1fr}.nav{flex-direction:column;gap:10px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" onclick="showPage('home')">SafeAfrica</a>
+    <nav>
+      <a onclick="showPage('home')">Accueil</a>
+      <a onclick="showPage('scams')">Catégories</a>
+      <a onclick="showPage('reports')">Signalements</a>
+      <a onclick="showPage('report')">Signaler</a>
+      <a onclick="showPage('adminLogin')">Admin</a>
+    </nav>
+  </div>
+</header>
+
+<div id="home" class="page">
+  <div class="hero">
+    <h1>Reconnaissez les arnaques avant de perdre votre argent</h1>
+    <p>SafeAfrica aide les citoyens africains à identifier les fraudes, protéger leurs données personnelles et signaler les situations suspectes.</p>
+    <button class="btn btn-white" onclick="showPage('report')">Signaler une arnaque</button>
+    <button class="btn btn-outline" onclick="showPage('scams')">Voir les catégories</button>
+  </div>
+
+  <section>
+    <h2>Catégories principales</h2>
+    <div class="grid">
+      <div class="card"><h3>Arnaques Mobile Money</h3><p>Faux agents, demandes de code OTP et faux gains.</p><div class="advice">Ne communiquez jamais votre code OTP, PIN ou mot de passe.</div></div>
+      <div class="card"><h3>Phishing</h3><p>Faux liens, SMS et e-mails imitant une banque ou un opérateur.</p><div class="advice">Ne cliquez pas sur le lien. Tapez vous-même l’adresse officielle.</div></div>
+      <div class="card"><h3>Faux investissements</h3><p>Cryptomonnaies, trading et rendements garantis trop élevés.</p><div class="advice">Aucun investissement sérieux ne garantit des profits rapides.</div></div>
+      <div class="card"><h3>Usurpation d’identité</h3><p>Comptes piratés, SIM swap et vol de données personnelles.</p><div class="advice">Activez la double authentification et contactez votre opérateur.</div></div>
+    </div>
+  </section>
+</div>
+
+<div id="scams" class="page hidden">
+  <section>
+    <h2>Catégories d’arnaques</h2>
+    <div class="grid">
+      <div class="card"><h3>Mobile Money</h3><p>Signes : demande d’OTP, faux blocage, promesse de gain.</p><div class="advice">Contactez directement votre opérateur via son numéro officiel.</div></div>
+      <div class="card"><h3>Phishing</h3><p>Signes : lien urgent, fautes, demande de données bancaires.</p><div class="advice">Ouvrez vous-même le site officiel dans votre navigateur.</div></div>
+      <div class="card"><h3>Faux investissement</h3><p>Signes : rendement garanti, pression, paiement Mobile Money.</p><div class="advice">Méfiez-vous de toute promesse de profit rapide et garanti.</div></div>
+      <div class="card"><h3>Usurpation d’identité</h3><p>Signes : code reçu sans action, compte piraté, SIM bloquée.</p><div class="advice">Activez la double authentification immédiatement.</div></div>
+    </div>
+  </section>
+</div>
+
+<div id="report" class="page hidden">
+  <section>
+    <h2>Signaler une arnaque</h2>
+    <form id="reportForm">
+      <label>Titre<input id="rTitle" required placeholder="Ex. Faux agent Orange Money"></label>
+      <label>Catégorie
+        <select id="rCategory">
+          <option>Mobile Money</option><option>Phishing</option><option>Faux investissement</option><option>Usurpation d’identité</option><option>Autre</option>
+        </select>
+      </label>
+      <label>Pays<input id="rCountry" value="Sénégal"></label>
+      <label>Ville<input id="rCity" placeholder="Dakar"></label>
+      <label class="full">Description<textarea id="rDescription" required placeholder="Décrivez la situation sans partager de mot de passe ou code OTP."></textarea></label>
+      <label>Numéro ou compte suspect<input id="rPhone" placeholder="+221…"></label>
+      <label>Lien suspect<input id="rLink" type="url" placeholder="https://…"></label>
+      <label class="full"><input type="checkbox" id="rAnonymous" checked> Signaler anonymement</label>
+      <button>Envoyer le signalement</button>
+      <div id="reportSuccess" class="success hidden">Merci ! Votre signalement a été envoyé et sera examiné par la modération.</div>
+    </form>
+  </section>
+</div>
+
+<div id="reports" class="page hidden">
+  <section>
+    <h2>Signalements vérifiés</h2>
+    <p style="color:var(--gray);margin-bottom:20px">Ces signalements ont été validés par l’équipe SafeAfrica.</p>
+    <div id="verifiedReports" class="grid"></div>
+  </section>
+</div>
+
+<div id="adminLogin" class="page hidden">
+  <div class="login">
+    <h1>Administration SafeAfrica</h1>
+    <p style="color:var(--gray);font-size:14px;margin-bottom:20px">Espace réservé aux administrateurs.</p>
+    <div id="loginError" class="error">Email ou mot de passe incorrect.</div>
+    <form id="loginForm">
+      <label>Email administrateur</label>
+      <input type="email" id="email" required>
+      <label>Mot de passe</label>
+      <input type="password" id="password" required>
+      <button>Se connecter</button>
+    </form>
+  </div>
+</div>
+
+<div id="admin" class="page hidden">
+  <div class="topbar">
+    <div class="logo">SafeAfrica — Administration</div>
+    <button class="logout" onclick="logout()">Déconnexion</button>
+  </div>
+  <section>
+    <div class="note"><strong>Attention :</strong> démonstration locale. En production, utilisez Supabase Auth et ne stockez jamais le mot de passe dans le code HTML.</div>
+    <div class="stats">
+      <div class="stat"><span>Total</span><strong id="total">0</strong></div>
+      <div class="stat"><span>En attente</span><strong id="pending">0</strong></div>
+      <div class="stat"><span>Vérifiés</span><strong id="verifiedCount">0</strong></div>
+      <div class="stat"><span>Rejetés</span><strong id="rejectedCount">0</strong></div>
+    </div>
+    <h2>Signalements à modérer</h2>
+    <div id="adminReports"></div>
+  </section>
+</div>
+
+<footer>SafeAfrica informe et oriente. En cas d’urgence, contactez les autorités compétentes.</footer>
+
+<script>
+const ADMIN_EMAIL="sdftechnologie@gmail.com";
+const ADMIN_PASSWORD="sdftech@7934";
+
+let reports=[
+ {id:1,title:"Fausse promotion Mobile Money",category:"Mobile Money",description:"Un message annonce un gain et demande des frais de déblocage.",country:"Sénégal",city:"Dakar",phone:"",link:"",status:"verified"},
+ {id:2,title:"Faux agent Orange Money",category:"Mobile Money",description:"Un inconnu demande le code OTP pour éviter le blocage du compte.",country:"Sénégal",city:"Dakar",phone:"",link:"",status:"pending"},
+ {id:3,title:"Faux investissement crypto",category:"Faux investissement",description:"Promesse de 300% de rendement en 48 heures via WhatsApp.",country:"Sénégal",city:"Thiès",phone:"",link:"",status:"pending"}
+];
+
+function showPage(id){
+  document.querySelectorAll(".page").forEach(p=>p.classList.add("hidden"));
+  document.getElementById(id).classList.remove("hidden");
+  window.scrollTo({top:0,behavior:"smooth"});
+  if(id==="reports") renderVerified();
+  if(id==="admin") renderAdmin();
+}
+
+document.getElementById("loginForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const email=document.getElementById("email").value.trim().toLowerCase();
+  const password=document.getElementById("password").value;
+  if(email===ADMIN_EMAIL&&password===ADMIN_PASSWORD){
+    showPage("admin");
+  }else{
+    document.getElementById("loginError").style.display="block";
+  }
+});
+
+function logout(){
+  showPage("home");
+  document.getElementById("loginForm").reset();
+  document.getElementById("loginError").style.display="none";
+}
+
+document.getElementById("reportForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const newReport={
+    id:Date.now(),
+    title:document.getElementById("rTitle").value,
+    category:document.getElementById("rCategory").value,
+    description:document.getElementById("rDescription").value,
+    country:document.getElementById("rCountry").value,
+    city:document.getElementById("rCity").value||"Non précisée",
+    phone:document.getElementById("rPhone").value,
+    link:document.getElementById("rLink").value,
+    status:"pending"
+  };
+  reports.unshift(newReport);
+  e.target.reset();
+  document.getElementById("reportSuccess").classList.remove("hidden");
+  setTimeout(()=>document.getElementById("reportSuccess").classList.add("hidden"),4000);
+});
+
+function renderVerified(){
+  const box=document.getElementById("verifiedReports");
+  const verified=reports.filter(r=>r.status==="verified");
+  box.innerHTML="";
+  if(!verified.length){box.innerHTML="<p>Aucun signalement vérifié pour le moment.</p>";return;}
+  verified.forEach(r=>{
+    box.innerHTML+=`<div class="card"><h3>${r.title}</h3><p>${r.description}</p><p style="font-size:13px">${r.country} — ${r.city}</p><div class="advice">Catégorie : ${r.category}</div></div>`;
+  });
+}
+
+function renderAdmin(){
+  const box=document.getElementById("adminReports");
+  box.innerHTML="";
+  reports.forEach(r=>{
+    box.innerHTML+=`<div class="report"><h3>${r.title}</h3><p>${r.description}</p><p style="color:var(--gray);font-size:13px">${r.country} — ${r.city} — ${r.category}</p><span class="badge ${r.status}">${r.status}</span><div class="actions"><button class="approve" onclick="setStatus(${r.id},'verified')">Valider</button><button class="reject" onclick="setStatus(${r.id},'rejected')">Rejeter</button></div></div>`;
+  });
+  document.getElementById("total").textContent=reports.length;
+  document.getElementById("pending").textContent=reports.filter(r=>r.status==="pending").length;
+  document.getElementById("verifiedCount").textContent=reports.filter(r=>r.status==="verified").length;
+  document.getElementById("rejectedCount").textContent=reports.filter(r=>r.status==="rejected").length;
+}
+
+function setStatus(id,status){
+  reports=reports.map(r=>r.id===id?{...r,status}:r);
+  renderAdmin();
+}
+
+showPage("home");
+</script>
+</body>
+</html>
